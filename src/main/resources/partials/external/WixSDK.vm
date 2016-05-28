@@ -1,0 +1,6 @@
+#if($mode == "debug")
+##<script type="text/javascript" src="//sslstatic.wix.com/services/js-sdk/1.64.0/js/Wix.js"></script>
+<script type="text/javascript" src="../static/js/external/Wix.js"></script>
+#else
+<script type="text/javascript" src="//static.parastorage.com/services/js-sdk/1.64.0/js/wix.min.js"></script>
+#end

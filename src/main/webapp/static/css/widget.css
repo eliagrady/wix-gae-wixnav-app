@@ -1,0 +1,18 @@
+.h1 {
+    color: mediumaquamarine;
+}
+body {
+    width: 100vw;
+    height: 100vh;
+}
+.parent {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.child {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
