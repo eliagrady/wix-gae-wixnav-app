@@ -1,3 +1,3 @@
-# iWix backend
+# WixNav app
 
-Serving OAuth endpoints and Datastore service for iWix chrome extension
+Wix 3rd party application using Spring, Google App Engine and Velocity
