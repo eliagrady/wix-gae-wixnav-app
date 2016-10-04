@@ -52,15 +52,20 @@
             })
 
             function init() {
-                $('#instanceId').html(Wix.Utils.getInstanceId());
-                $('#uid').html(Wix.Utils.getUid());
-                $('#permissions').html(Wix.Utils.getPermissions());
-                $('#signDate').html(Wix.Utils.getSignDate());
+                try {
+                    $('#instanceId').html(Wix.Utils.getInstanceId());
+                    $('#uid').html(Wix.Utils.getUid());
+                    $('#permissions').html(Wix.Utils.getPermissions());
+                    $('#signDate').html(Wix.Utils.getSignDate());
 
-                settings.styling.color = settings.styling.color || "LightGreen";
-                settings.title = settings.title || "My title";
-                $('#title').html('<h2>'+settings.title+'</h2>');
-                $('#title').css('background-color', settings.styling.color);
+                    settings.styling.color = settings.styling.color || "LightGreen";
+                    settings.title = settings.title || "My title";
+                    $('#title').html('<h2>'+settings.title+'</h2>');
+                    $('#title').css('background-color', settings.styling.color);
+                }
+                catch (err) {
+
+                }
             }
 
         </script>

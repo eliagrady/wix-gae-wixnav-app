@@ -1,0 +1,8 @@
+## IntelliJ
+target
+.idea
+wixnav.iml
+
+## OSX
+.DS_Store
+nohup.out

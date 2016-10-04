@@ -5,7 +5,7 @@ var WidgetWidth = {
 
 if(document) {
     document.addEventListener("DOMContentLoaded", function () {
-        var resizeWindow = function (width) {
+        var resizeWindow = function (width,onComplete) {
             Wix.getBoundingRectAndOffsets(function(data){
                 var height = data.offsets.y + data.rect.height;
                 Wix.resizeWindow(width, height, onComplete);

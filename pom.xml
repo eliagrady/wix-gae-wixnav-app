@@ -12,12 +12,12 @@
     <properties>
         <!-- TODO change to point at your app-engine SDK local installation -->
         <!--ON MAC-->
-        <gae.home>/Users/Elia/Synced/Dropbox/Workspace/appengine/appengine-java-sdk-1.9.37</gae.home>
+        <!--<gae.home>/Users/Elia/Synced/Dropbox/Workspace/appengine/appengine-java-sdk-1.9.42</gae.home>-->
         <!--ON PC-->
-        <!--<gae.home>D:\Dev\lib\appengine-java-sdk-1.9.24</gae.home>-->
+        <gae.home>F:\Dropbox\Workspace\appengine\appengine-java-sdk-1.9.42</gae.home>
         <!-- TODO change to your app-engine application name (as you registered the application with app-engine) -->
         <gaeApplicationName>wixnav</gaeApplicationName>
-        <gae.version>1.9.37</gae.version>
+        <gae.version>1.9.42</gae.version>
 
         <!-- Upload to http://test.latest.<applicationName>.appspot.com by default -->
         <gae.application.version>test</gae.application.version>
@@ -79,6 +79,16 @@
                     <port>8080</port>
                     <address>0.0.0.0</address>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>appengine-maven-plugin</artifactId>
+                <version>0.1.2</version>
+            </plugin>
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>9.3.7.v20160115</version>
             </plugin>
         </plugins>
     </build>
