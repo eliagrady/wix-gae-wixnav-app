@@ -1,0 +1,129 @@
+{
+  "pages": [
+    {
+      "title": "HOME",
+      "id": "mainPage",
+      "hide": false,
+      "isHomepage": true
+    },
+    {
+      "title": "SHOP",
+      "id": "c1dxp",
+      "hide": false,
+      "subPages": [
+        {
+          "title": "All Products",
+          "id": "qkvu8",
+          "hide": false,
+          "isHomepage": false
+        },
+        {
+          "title": "Bangles & Bracelets",
+          "id": "hn320",
+          "hide": false,
+          "isHomepage": false
+        },
+        {
+          "title": "Necklaces & Pendants",
+          "id": "ebeqa",
+          "hide": false,
+          "isHomepage": false
+        },
+        {
+          "title": "Rings",
+          "id": "oao39",
+          "hide": false,
+          "isHomepage": false
+        },
+        {
+          "title": "Miscellaneous",
+          "id": "i4mg2",
+          "hide": false,
+          "isHomepage": false
+        },
+        {
+          "title": "Sale",
+          "id": "ukazq",
+          "hide": false,
+          "isHomepage": false
+        }
+      ],
+      "isHomepage": false
+    },
+    {
+      "title": "ABOUT",
+      "id": "wi63o",
+      "hide": false,
+      "isHomepage": false
+    },
+    {
+      "title": "HALLMARK",
+      "id": "p9znt",
+      "hide": false,
+      "isHomepage": false
+    },
+    {
+      "title": "FAQ",
+      "id": "cee5",
+      "hide": false,
+      "isHomepage": false
+    },
+    {
+      "title": "CONTACT",
+      "id": "c24vq",
+      "hide": false,
+      "isHomepage": false
+    },
+    {
+      "title": "Product Page",
+      "id": "cf8r",
+      "hide": true,
+      "isHomepage": false
+    },
+    {
+      "title": "Shopping Cart",
+      "id": "cjwv",
+      "hide": true,
+      "isHomepage": false
+    },
+    {
+      "title": "Thank You Page",
+      "id": "c1wb3",
+      "hide": true,
+      "isHomepage": false
+    },
+    {
+      "title": "JOBS",
+      "id": "cox4m",
+      "hide": false,
+      "isHomepage": false
+    }
+  ],
+  "anchors": [
+    {
+      "id": "comp-inxojytr",
+      "title": "Anchor 1"
+    },
+    {
+      "id": "comp-inxok8nr",
+      "title": "Anchor 2"
+    },
+    {
+      "id": "comp-inxokg1f",
+      "title": "Anchor 3"
+    },
+    {
+      "id": "PAGE_TOP_ANCHOR",
+      "title": "TOP_PAGE_mainPage"
+    }
+  ],
+  "siteInfo": {
+    "siteTitle": "Bottlebee | Fabulous Handmade Jewellery",
+    "pageTitle": "HOME",
+    "siteDescription": "Bottlebee jewellery is handcrafted from raw metal, which is sawn by hand, shaped, filed, soldered, textured and cleaned,  And then the process is repeated until",
+    "siteKeywords": "Sterling, Silver, Gold, Handmade, Jewellery, London, UK, Seena, Gosrani, Ring",
+    "baseUrl": "http://eliag7.wixsite.com/copy-of-bottlebee",
+    "url": "http://editor.wix.com",
+    "referer": "http://editor.wix.com/html/editor/web/renderer/edit/5f7f873d-3a7e-4d07-811e…6ec-58aa-72074a5ed6c9&editorSessionId=49124bf6-bd18-449f-8224-f1944da59ff4"
+  }
+}

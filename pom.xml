@@ -23,6 +23,9 @@
         <gae.application.version>test</gae.application.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.version>4.1.4.RELEASE</spring.version>
+        <!-- App Engine Standard currently requires Java 7 -->
+        <maven.compiler.target>1.7</maven.compiler.target>
+        <maven.compiler.source>1.7</maven.compiler.source>
     </properties>
 
 
@@ -53,22 +56,22 @@
                 </configuration>
             </plugin>
             <!--<plugin>-->
-                <!--<groupId>net.kindleit</groupId>-->
-                <!--<artifactId>maven-gae-plugin</artifactId>-->
-                <!--<version>${gaePluginVersion}</version>-->
-                <!--<configuration>-->
-                    <!--<unpackVersion>${gae.version}</unpackVersion>-->
-                    <!--<serverId>appengine.google.com</serverId>-->
-                    <!--&lt;!&ndash;<appDir>${webappDirectory}</appDir>&ndash;&gt;-->
-                <!--</configuration>-->
-                <!--<dependencies>-->
-                    <!--<dependency>-->
-                        <!--<groupId>net.kindleit</groupId>-->
-                        <!--<artifactId>gae-runtime</artifactId>-->
-                        <!--<version>${gae.plugin.runtime}</version>-->
-                        <!--<type>pom</type>-->
-                    <!--</dependency>-->
-                <!--</dependencies>-->
+            <!--<groupId>net.kindleit</groupId>-->
+            <!--<artifactId>maven-gae-plugin</artifactId>-->
+            <!--<version>${gaePluginVersion}</version>-->
+            <!--<configuration>-->
+            <!--<unpackVersion>${gae.version}</unpackVersion>-->
+            <!--<serverId>appengine.google.com</serverId>-->
+            <!--&lt;!&ndash;<appDir>${webappDirectory}</appDir>&ndash;&gt;-->
+            <!--</configuration>-->
+            <!--<dependencies>-->
+            <!--<dependency>-->
+            <!--<groupId>net.kindleit</groupId>-->
+            <!--<artifactId>gae-runtime</artifactId>-->
+            <!--<version>${gae.plugin.runtime}</version>-->
+            <!--<type>pom</type>-->
+            <!--</dependency>-->
+            <!--</dependencies>-->
             <!--</plugin>-->
             <plugin>
                 <groupId>com.google.appengine</groupId>
@@ -108,11 +111,11 @@
     </pluginRepositories>
     <dependencies>
         <!--<dependency>-->
-            <!--<groupId>net.kindleit</groupId>-->
-            <!--<artifactId>gae-runtime</artifactId>-->
-            <!--<version>${gae.plugin.runtime}</version>-->
-            <!--<type>pom</type>-->
-            <!--<scope>provided</scope>-->
+        <!--<groupId>net.kindleit</groupId>-->
+        <!--<artifactId>gae-runtime</artifactId>-->
+        <!--<version>${gae.plugin.runtime}</version>-->
+        <!--<type>pom</type>-->
+        <!--<scope>provided</scope>-->
         <!--</dependency>-->
 
         <dependency>
