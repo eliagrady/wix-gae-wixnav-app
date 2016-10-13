@@ -120,6 +120,7 @@
 					addEventListener: Base.addEventListener,
 					resizeWindow: Base.resizeWindow,
 					requestLogin: Base.requestLogin,
+					logOutCurrentMember: Base.logOutCurrentMember,
 					currentMember: Base.currentMember,
 					navigateToPage: Base.navigateToPage,
 					getCurrentPageId: Base.getCurrentPageId,
@@ -133,7 +134,8 @@
 					navigateToAnchor: Base.navigateToAnchor,
 					Data: Data,
 					getComponentInfo: Base.getComponentInfo,
-					replaceSectionState: Base.replaceSectionState
+					replaceSectionState: Base.replaceSectionState,
+					setPageMetadata: Base.setPageMetadata
 				};
 			};
 
@@ -206,7 +208,7 @@
 
 			var isReady = false;
 
-			var version = "1.66.0";
+			var version = "1.67.0";
 
 			var init = function init(opts) {
 				postMessage.init(getVersion());
@@ -256,7 +258,7 @@
 
 			var getVersion = function getVersion() {
 
-				if (version !== '1.66.0') {
+				if (version !== '1.67.0') {
 					return 'unknown';
 				}
 
@@ -543,6 +545,7 @@
 			SUPER_APPS_OPEN_MEDIA_DIALOG: 'superAppsOpenMediaDialog',
 			OPEN_BILLING_PAGE: 'openBillingPage',
 			GET_SITE_PAGES: 'getSitePages',
+			SET_PAGE_METADATA: 'setPageMetadata',
 			GET_SITE_COLORS: 'getSiteColors',
 			GET_USER_SESSION: 'getUserSession',
 			NAVIGATE_TO_PAGE: 'navigateToPage',
@@ -550,6 +553,7 @@
 			HEIGHT_CHANGED: 'heightChanged',
 			NAVIGATE_TO_STATE: 'navigateToState',
 			SM_REQUEST_LOGIN: 'smRequestLogin',
+			LOG_OUT_CURRENT_MEMBER: 'logOutCurrentMember',
 			SM_CURRENT_MEMBER: 'smCurrentMember',
 			SITE_INFO: 'siteInfo',
 			BOUNDING_RECT_AND_OFFSETS: 'boundingRectAndOffsets',
@@ -4131,6 +4135,38 @@
 				postMessage.sendMessage(postMessage.MessageTypes.GET_SITE_PAGES, null, callback);
 			};
 
+			var setPageMetadata = function setPageMetadata(options) {
+				if (Utils.getViewMode() !== 'site') {
+					reporter.reportSdkError('Invalid view mode. This function cannot be called in editor/preview mode. Supported view mode is: [site]');
+					return;
+				}
+				if (!utils.isObject(options)) {
+					reporter.reportSdkError('Missing mandatory argument - options - should be of type Object');
+					return;
+				}
+				if (!options.title && !options.description) {
+					reporter.reportSdkError('Invalid argument - options must contain title and/or description of type string');
+					return;
+				}
+				if (options.title && !utils.isString(options.title)) {
+					reporter.reportSdkError('Invalid argument - title must be of type string');
+					return;
+				}
+				if (options.description && !utils.isString(options.description)) {
+					reporter.reportSdkError('Invalid argument - description must be of type string');
+					return;
+				}
+
+				var args = {};
+				if (options.title) {
+					args.title = options.title;
+				}
+				if (options.description) {
+					args.description = options.description;
+				}
+				postMessage.sendMessage(postMessage.MessageTypes.SET_PAGE_METADATA, args);
+			};
+
 			var getStyleParams = function getStyleParams(callback) {
 				reporter.reportSdkMsg('Wix.getStyleParams is DEPRECATED use Wix.Styles.getStyleParams');
 				return Styles.getStyleParams(callback);
@@ -4213,7 +4249,37 @@
 			};
 
 			var requestLogin = function requestLogin(onSuccess) {
+				if (Utils.getViewMode() !== 'site') {
+					reporter.reportSdkError('Invalid view mode. This function cannot be called in editor/preview mode. Supported view mode is: [site]');
+					return;
+				}
+
 				postMessage.sendMessage(postMessage.MessageTypes.SM_REQUEST_LOGIN, null, onSuccess);
+			};
+
+			var logOutCurrentMember = function logOutCurrentMember(options, onError) {
+				if (Utils.getViewMode() !== 'site') {
+					reporter.reportSdkError('Invalid view mode. This function cannot be called in editor/preview mode. Supported view mode is: [site]');
+					return;
+				}
+
+				var args = {};
+				if (utils.isObject(options)) {
+					if (options.language) {
+						args.language = options.language;
+					}
+					if (onError && !utils.isFunction(onError)) {
+						reporter.reportSdkError('Invalid argument - onError, must be a function');
+						return;
+					}
+					postMessage.sendMessage(postMessage.MessageTypes.LOG_OUT_CURRENT_MEMBER, args, onError);
+				} else if (utils.isFunction(options)) {
+					postMessage.sendMessage(postMessage.MessageTypes.LOG_OUT_CURRENT_MEMBER, args, options);
+				} else if (options) {
+					reporter.reportSdkError('Invalid argument - options, must be an object');
+				} else {
+					postMessage.sendMessage(postMessage.MessageTypes.LOG_OUT_CURRENT_MEMBER, args);
+				}
 			};
 
 			var openPopup = function openPopup(url, width, height, position, onClose, theme) {
@@ -4572,6 +4638,21 @@
 				getSitePages: getSitePages,
 
 				/**
+				 * The setPageMetadata method is used to set the title and/or description of the page within the site.
+				 * @function
+				 * @memberof Wix
+				 * @since 1.66.0
+				 * @param {Object} options object which contains the title and/or description properties to be set
+				 *
+				 * @example
+				 * Wix.setPageMetadata({
+	         *      title: 'new title',
+	         *      description: 'new description'
+	         * });
+				 */
+				setPageMetadata: setPageMetadata,
+
+				/**
 				 * The getBoundingRectAndOffsets method returns the app's component bounding rect and site's offset.
 				 * @function
 				 * @memberof Wix
@@ -4669,6 +4750,23 @@
 	         * }
 				 */
 				requestLogin: requestLogin,
+
+				/*
+				 * This method is part of Wix Site Members feature. It allows the current site visitor to log out in case he was logged in.
+				 * After a successful log out, iframe will refresh.
+				 *
+				 * @function
+				 * @memberof Wix
+				 * @since 1.66.0
+				 * @param {Object} options may contain a 'language' property
+				 * @param {Function} onError A callback function to with error details.
+				 * @example
+				 *
+				 * Wix.logOutCurrentMember({}, function (error) {
+				 *    //do something with error
+				 * }
+				 */
+				logOutCurrentMember: logOutCurrentMember,
 
 				/**
 				 *
